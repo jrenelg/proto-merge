@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package basedir.user;
+
+option go_package = "user";
+option java_multiple_files = true;
+option java_outer_classname = "User";
+option java_package = "com.basedir.user";
+
+import "basedir/data/phone.proto";
+import "google/protobuf/timestamp.proto";
+
+service UserService {
+  rpc GetPhone(GetPhoneRequest) returns (GetPhoneResponse);
+}
+
+message GetPhoneRequest {
+  string id = 1;
+}
+
+message GetPhoneResponse {
+  basedir.data.Phone phone = 1;
+  google.protobuf.Timestamp time = 2;
+}
